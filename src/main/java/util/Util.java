@@ -1,5 +1,9 @@
 package util;
 
+import org.junit.Test;
+
+import java.util.Arrays;
+
 public class Util {
     /**
      * 将long装换成字节数组
@@ -46,4 +50,13 @@ public class Util {
         return result ;
     }
 
+    @Test
+    public void test(){
+        long l = System.currentTimeMillis();
+        System.out.println(l);
+        byte[] bytes = long2ByteArr(l);
+        System.out.println(Arrays.toString(bytes));
+        long l1 = byteArr2Long(bytes, 0);
+        System.out.println(l1);
+    }
 }
