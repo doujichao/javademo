@@ -5,9 +5,17 @@ import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
 
 /**
  * 测试缓冲区
+ * ServerSocketChannel:ServerSocket的替代类，支持阻塞通讯和非阻塞通讯
+ * SocketChannel:Socket的替代类，支持阻塞通讯和非阻塞通讯
+ * Selector:未ServerSocketChannel监控接收连接就绪事件，未SocketChannel监控连接就绪，度就绪，和写就绪事件
+ * SelectionKey:代表ServerSocketChannel以SocketChannel向Selector注册事件的句柄
+ *          当一个SelectionKey对象位于Selector对象的selected-keys集合中时，就表示这个
+ *          SelectionKey对象相关的事件发生了
+ *
  */
 public class Test {
     @org.junit.Test
@@ -34,18 +42,33 @@ public class Test {
         System.out.println(buffer.limit());
         //100
         System.out.println(buffer.capacity());
-        //96
+        //96remaining=limit-position
         System.out.println(buffer.remaining());
 
 //        buffer.position(1);
 
-        //拍板
+        /**
+         * 拍板：position=0，limit=position
+         */
         buffer.flip();
         byte b = buffer.get();
         System.out.println(b);
 
         buffer.slice();
+        /*
+         * 删除从0到position的内容，将position到limit
+         * 的内容复制到从0开始的位置，
+         * 同时将position=limit-position,limit=capacity
+         */
         buffer.compact();
+        /*
+         *重新设置limit=capacity,position=0
+         */
+        buffer.clear();
+        /*
+         *重新读取：position=0
+         */
+        buffer.rewind();
     }
 
     /**
@@ -97,6 +120,32 @@ public class Test {
         MappedByteBuffer map = channel.map(FileChannel.MapMode.READ_ONLY, 0, raf.length());
 
         System.out.println("mapLength:"+map.capacity());
+
+    }
+
+    /**
+     * Charset:提供了编码和解码的方法
+     * encode(String str)
+     * encode(CharBuffer cb)
+     * decode(ByteBuffer bb)
+     */
+    @org.junit.Test
+    public void testCharset(){
+        Charset charset=Charset.forName("GBK");
+        ByteBuffer encode = charset.encode("你好");
+        System.out.println(encode);
+    }
+
+    /**
+     * SelectableChannel的主要方法如下：
+     * configureBlocking(boolean block):设置阻塞和非阻塞模式
+     *
+     * 注册Selector事件
+     * register(Selector sel,int ops):
+     * register(Selector sel,int ops,Object attachment):
+     */
+    @org.junit.Test
+    public void testSelectableChannel(){
 
     }
 }

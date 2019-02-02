@@ -8,6 +8,10 @@ import java.util.Set;
 
 /**
  * 服务器端套接字通道
+ * ServerSocketChannel：通过open方法返回ServerSocketChannel对象，
+ * 可以通过serverSocketChannel.socket().bind(port);
+ * public final int validOps():返回ServerSocketChannel所能产生的事件
+ * public ServerSocket socket():返回ServerSocketChannel所关联的ServerSocket对象
  */
 public class MyServerSocketChannel {
 
@@ -24,6 +28,9 @@ public class MyServerSocketChannel {
         ssc.bind(address);
         //配置非阻塞模式
         ssc.configureBlocking(false);
+        /*
+         * ServerSocketChannel只能发生一种事件
+         */
         //在挑选器中注册ssc，指定接收事件(感兴趣的事件)
         ssc.register(selector, SelectionKey.OP_ACCEPT);
 
