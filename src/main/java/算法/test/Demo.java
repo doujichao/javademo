@@ -66,5 +66,13 @@ public class Demo {
 		int n=newhash & 0xFFFF;
 		System.out.println(n);
 	}
+
+	@Test
+	public void test4(){
+		long l=1L;
+		for (int i=0;i<64;i++){
+			System.out.println(Long.toBinaryString(l=l | (1L<<i)));
+		}
+	}
 	
 }
