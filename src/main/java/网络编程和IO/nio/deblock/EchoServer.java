@@ -97,7 +97,7 @@ public class EchoServer {
             return;
         }
         //截取一行数据
-        String outputData = data.substring(0, data.indexOf("\n") + 1);
+        String outputData = data.substring(0, data.indexOf("\r\n") + 1);
         System.out.println(outputData);
 
         //把输出的字符串按照Utf-8编码，转换为字节，把它放到outputBuffer中

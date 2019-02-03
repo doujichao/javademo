@@ -45,7 +45,7 @@ public class EchoClient {
     }
 
     private PrintWriter getWriter(Socket socket) throws IOException {
-        return new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+        return new PrintWriter(socket.getOutputStream(),true);
     }
 
     private BufferedReader getReader(Socket socket) throws IOException {
