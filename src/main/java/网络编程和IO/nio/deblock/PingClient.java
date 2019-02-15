@@ -147,7 +147,7 @@ public class PingClient {
             BufferedReader localReader=new BufferedReader(new InputStreamReader(System.in));
             String msg=null;
             while ((msg=localReader.readLine())!=null){
-                if (msg.equals("bye")){
+                if (!msg.equals("bye")){
                     Target target=new Target(msg);
                     addTarget(target);
                 }else {
