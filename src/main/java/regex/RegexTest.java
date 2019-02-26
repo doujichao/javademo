@@ -35,4 +35,11 @@ public class RegexTest {
         return matches;
     }
 
+    @Test
+    public void testFind(){
+        Pattern p=Pattern.compile("<a>");
+        Matcher m = p.matcher("<a>1232</a>");
+        System.out.println(m.find());
+
+    }
 }

@@ -74,7 +74,7 @@ public class SimpleServer {
     public static void main(String[] args) throws Exception {
         SimpleServer server=new SimpleServer();
         //把实现创建的HelloServiceImpl对象加入到服务器的缓存中
-        server.register("reflect.remoteReflect.HelloServer",new HelloServiceImpl());
+        server.register("reflect.remoteReflect.HelloService",new HelloServiceImpl());
         server.service();
     }
 }
