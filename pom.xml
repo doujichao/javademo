@@ -45,6 +45,14 @@
             <artifactId>slf4j-jdk14</artifactId>
             <version>1.6.0</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/xom/xom -->
+        <dependency>
+            <groupId>xom</groupId>
+            <artifactId>xom</artifactId>
+            <version>1.2.5</version>
+        </dependency>
+
     </dependencies>
 
 

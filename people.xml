@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<people>
+    <person>
+        <first>Dr.Bunsen</first>
+        <last>HoneyDew</last>
+    </person>
+    <person>
+        <first>Gonzo</first>
+        <last>The Great</last>
+    </person>
+    <person>
+        <first>Phillip J.</first>
+        <last>Fry</last>
+    </person>
+</people>

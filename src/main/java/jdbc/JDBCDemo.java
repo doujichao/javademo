@@ -4,12 +4,43 @@ package jdbc;
 import org.junit.Test;
 import util.JDBCUtil;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.sql.*;
 
-public class JDBCDemo {
+public class JDBCDemo extends JFrame implements ActionListener {
 
+    private Statement stmt;
+    private ResultSet resultSet;
+
+    private JLabel rowLabel=new JLabel();
+    private JTextField idTxtFid=new JTextField();
+    private JTextField nameTxtFid=new JTextField();
+    private JTextField ageTxtFid=new JTextField();
+    private JTextField addressTxtFid=new JTextField();
+
+    private JLabel idLabel=new JLabel("id");
+    private JLabel nameLabel=new JLabel("name");
+    private JLabel ageLabel=new JLabel("age");
+    private JLabel addressLabel=new JLabel("address");
+
+    private JButton firstBt=new JButton("first");
+    private JButton previousBt=new JButton("previous");
+    private JButton nextBt=new JButton("next");
+    private JButton lastBt=new JButton("last");
+    private JButton insertBt=new JButton("insert");
+    private JButton deleteBt=new JButton("delete");
+    private JButton updateBt=new JButton("update");
+
+    private JPanel headPanel=new JPanel();
+    private JPanel centerPanel=new JPanel();
+    private JPanel bottomPanel=new JPanel();
 
     private static String className="com.mysql.jdbc.Driver";
     private static String url="jdbc:mysql://127.0.0.1:3306/storeDB?characterEncoding=UTF-8&serverTimezone=UTC";
@@ -33,7 +64,99 @@ public class JDBCDemo {
         }
     }
 
-    public static void main(String[] args){
+
+    public JDBCDemo(String title) throws SQLException {
+        super(title);
+        stmt=connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+        resultSet=stmt.executeQuery("select id,name,age,address from customers");
+        if (resultSet.next())refresh();
+        buildDisplay();
+
+    }
+
+    private void buildDisplay() {
+        firstBt.addActionListener(this);
+        previousBt.addActionListener(this);
+        nextBt.addActionListener(this);
+        lastBt.addActionListener(this);
+        insertBt.addActionListener(this);
+        updateBt.addActionListener(this);
+        deleteBt.addActionListener(this);
+
+        Container contentPane=getContentPane();
+        headPanel.add(rowLabel);
+        centerPanel.setLayout(new GridLayout(4,2,2,2));
+        centerPanel.add(idLabel);
+        contentPane.add(idTxtFid);
+
+        idTxtFid.setEnabled(false);
+        centerPanel.add(nameLabel);
+        centerPanel.add(nameTxtFid);
+        centerPanel.add(ageLabel);
+        centerPanel.add(ageTxtFid);
+        centerPanel.add(addressLabel);
+        centerPanel.add(addressTxtFid);
+
+        bottomPanel.add(firstBt);
+        bottomPanel.add(previousBt);
+        bottomPanel.add(nextBt);
+        bottomPanel.add(lastBt);
+        bottomPanel.add(insertBt);
+        bottomPanel.add(updateBt);
+        bottomPanel.add(deleteBt);
+
+        contentPane.add(headPanel,BorderLayout.NORTH);
+        contentPane.add(centerPanel,BorderLayout.CENTER);
+        contentPane.add(bottomPanel,BorderLayout.SOUTH);
+
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                //关闭数据库连接
+                try {
+                    connection.close();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                } System.exit(0);
+            }
+        });
+        pack();
+        setVisible(true);
+    }
+
+    /**
+     * 刷新页面的数据
+     */
+    private void refresh() throws SQLException {
+        int row = resultSet.getRow();
+        rowLabel.setText("显示第"+row+"条记录");
+        if (row==0){
+            idTxtFid.setText("");
+            nameTxtFid.setText("");
+            ageTxtFid.setText("");
+            addressTxtFid.setText("");
+        }else {
+            idTxtFid.setText(new Long(resultSet.getLong(1)).toString());
+            nameTxtFid.setText(resultSet.getString(2));
+            ageTxtFid.setText(new Integer(resultSet.getInt(3)).toString());
+            addressTxtFid.setText(resultSet.getString(4));
+        }
+    }
+
+
+
+    @Test
+    public void testDataBaseMate() throws SQLException {
+        DatabaseMetaData metaData = connection.getMetaData();
+        System.out.println("允许的最大连接数："+metaData.getMaxConnections());
+    }
+
+    public static void main(String[] args) throws SQLException {
+        new JDBCDemo("演示Result的用法");
+    }
+    @Test
+    public void testCall(){
         try {
             Connection conn = JDBCUtil.getConnection();
             //创建call对象
@@ -103,5 +226,66 @@ public class JDBCDemo {
          */
         rs.setFetchDirection(ResultSet.FETCH_FORWARD);
         System.out.println(connection.getMetaData());
+    }
+
+    /**
+     * ResultSet.TYPE_FORWARD_ONLY:结果集只能从上往下移动，不能滚动，这是默认值
+     * ResultSet.TYPE_SCROLL_INSENSITIVE:结果集可以上下移动，对于修改不敏感
+     * ResultSet.TYPE_SCROLL_SENSITIVE:结果集可以上下移动，对于修改敏感，比如删除一条数据的时候
+     *                                  游标位置会随之变化
+     *
+     *CONCUR_READ_ONLY:结果集不能被更新
+     *CONCUR_UPDATABLE:结果集可以被更新
+     *
+     */
+    @Test
+    public void testResult() throws SQLException {
+        Statement statement = connection.createStatement(ResultSet.TYPE_FORWARD_ONLY,ResultSet.CONCUR_UPDATABLE);
+
+        ResultSet rs = statement.executeQuery("select * from Customers");
+        System.out.println(rs.getType());
+        System.out.println(rs.getConcurrency());
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        JButton b= (JButton) e.getSource();
+        try{
+            if (b.getText().equals("first")){
+                resultSet.first();
+            }else if (b.getText().equals("last")){
+                resultSet.last();
+            }else if (b.getText().equals("next")){
+                if (resultSet.isLast())return;
+                resultSet.next();
+            }else if (b.getText().equals("previous")){
+                if (resultSet.isFirst())return;
+                resultSet.previous();
+            }else if (b.getText().equals("update")){
+                changeData();
+                resultSet.updateRow();
+            }else if (b.getText().equals("delete")){
+                resultSet.deleteRow();
+                resultSet.first();
+            }else if (b.getText().equals("insert")){
+                //把游标移动到待插入的位置
+                resultSet.moveToInsertRow();
+                changeData();
+                resultSet.insertRow();
+                //把游标移动到插入前的位置
+                resultSet.moveToCurrentRow();
+            }
+            refresh();
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        }
+
+    }
+
+    private void changeData() throws SQLException {
+        resultSet.updateString("name",nameTxtFid.getText());
+        resultSet.updateInt("age",Integer.parseInt(ageTxtFid.getText()));
+        resultSet.updateString("address",addressTxtFid.getText());
     }
 }
