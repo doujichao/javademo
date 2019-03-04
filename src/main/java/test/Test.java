@@ -1,14 +1,46 @@
 package test;
 
 import org.springframework.util.StringUtils;
+import util.OSExecute;
+import util.OSExecuteException;
 
+import java.lang.reflect.Method;
+import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+enum Explore {NERE,THERE}
+
 public class Test {
+
+    public  Set<String> analyze(Class<?> enumClass){
+        System.out.println("---------Analyzing "+enumClass+"------------");
+        System.out.println("Interfaces:");
+        for (Type t:enumClass.getGenericInterfaces()){
+            System.out.println(t);
+        }
+        System.out.println("Base:"+enumClass.getSuperclass());
+        System.out.println("Method:");
+        Set<String> methods=new TreeSet<>();
+        for (Method m:enumClass.getMethods()){
+            methods.add(m.getName());
+        }
+        System.out.println(methods);
+        System.out.println("-----------------------------");
+        return methods;
+    }
+
+    @org.junit.Test
+    public void testEnum() {
+        Set<String> exploreMethods = analyze(Explore.class);
+        Set<String> enumMethod = analyze(Enum.class);
+        System.out.println("Explore.containsAll(Enum)?"+exploreMethods.containsAll(enumMethod));
+        exploreMethods.removeAll(enumMethod);
+        System.out.println(exploreMethods);
+    }
 
     @org.junit.Test
     public void testStringUtils(){
