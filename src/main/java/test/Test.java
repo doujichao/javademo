@@ -49,6 +49,18 @@ public class Test {
     }
 
     @org.junit.Test
+    public void testString(){
+        String s1="hello";
+        String s2="hello";
+        String s3=new String("hello");
+        String s4=new String("hello");
+        System.out.println(s1==s2);
+        System.out.println(s1==s3);
+        System.out.println(s4==s3);
+        System.out.println(s3.equals(s4));
+    }
+
+    @org.junit.Test
     public void testBigDecimal(){
         BigDecimal bigDecimal = new BigDecimal(0.00).setScale(2, BigDecimal.ROUND_HALF_UP);
         System.out.println(bigDecimal);
@@ -102,21 +114,7 @@ public class Test {
         System.out.println(Arrays.toString(input.split(" ")));
     }
 
-    @org.junit.Test
-    public void testClass(){
-        List<Frob> list=new ArrayList<>();
-        Map<Frob,Fnorkle>map=new HashMap<>();
-        Quark<Fnorkle> quark=new Quark<>();
-        Particle<Long,Double>p=new Particle<>();
-        System.out.println(Arrays.toString(list.getClass().getTypeParameters()));
-        System.out.println(Arrays.toString(map.getClass().getTypeParameters()));
-        System.out.println(Arrays.toString(quark.getClass().getTypeParameters()));
-        System.out.println(Arrays.toString(p.getClass().getTypeParameters()));
-    }
+
 
 }
 
-class Frob{}
-class Fnorkle{}
-class Quark<Q>{}
-class Particle<Position,Momentum>{}
