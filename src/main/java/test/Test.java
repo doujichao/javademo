@@ -1,14 +1,13 @@
 package test;
 
 import org.springframework.util.StringUtils;
-import util.OSExecute;
-import util.OSExecuteException;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.util.*;
+import javax.swing.Timer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -67,6 +66,33 @@ public class Test {
     }
 
     @org.junit.Test
+    public void testInteger(){
+        int i3=128;
+        int i4=128;
+        Integer i1=new Integer(128);
+        Integer i2=new Integer(128);
+        int i5=new Integer(128);
+        int i6 =new Integer(128);
+        Integer i7=128;
+        Integer i8=128;
+        System.out.println("i1  "+System.identityHashCode(i1));
+        System.out.println("i2  "+System.identityHashCode(i2));
+        System.out.println("i3  "+System.identityHashCode(i3));
+        System.out.println("i4  "+System.identityHashCode(i4));
+        System.out.println("i5  "+System.identityHashCode(i5));
+        System.out.println("i6  "+System.identityHashCode(i6));
+        System.out.println("i7  "+System.identityHashCode(i7));
+        System.out.println("i8  "+System.identityHashCode(i8));
+        System.out.println(i1 == i2);
+        System.out.println(i1 == i3);
+        System.out.println(i3 == i4);
+        System.out.println(i1 == i7);
+        System.out.println(i7 == i8);
+        System.out.println(i1 .equals( i2));
+        System.out.println(i1 .equals( i3));
+    }
+
+    @org.junit.Test
     public void testBigDecimal(){
         BigDecimal bigDecimal = new BigDecimal(0.00).setScale(2, BigDecimal.ROUND_HALF_UP);
         System.out.println(bigDecimal);
@@ -120,7 +146,20 @@ public class Test {
         System.out.println(Arrays.toString(input.split(" ")));
     }
 
+    @org.junit.Test
+    public void testLambda(){
+        String[] planets=new String[]{"Mercury","Venus","Earth","Mars","Jupiter","Saturn"
+        ,"Uranus","Neptune"};
+        System.out.println(Arrays.toString(planets));
+        System.out.println("Sorted in dictionary order");
+        Arrays.sort(planets);
+        System.out.println("Sorted by length:");
+        Arrays.sort(planets, Comparator.comparingInt(String::length));
+        System.out.println(Arrays.toString(planets));
 
+        Timer t=new Timer(1000,event -> System.out.println("The time is "+new Date()));
+        t.start();
+    }
 
 }
 
