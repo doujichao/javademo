@@ -19,7 +19,40 @@ import org.junit.Test;
 public class ObjectStreamDemo {
 
 	public static void main(String[] args) {
-		
+
+		Employee harry=new Employee("Harry Hacker",5000,1989,10,1);
+		Manager carl=new Manager("Carl Cracker",8000,1987,12,15);
+		Manager toney=new Manager("Tony Tester",4000,1990,3,15);
+
+		Employee[] staff=new Employee[3];
+		staff[0]=carl;
+		staff[1]=harry;
+		staff[2]=toney;
+
+		try (ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("employee.dat"))){
+			oos.writeObject(staff);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		try (ObjectInputStream ois=new ObjectInputStream(new FileInputStream("employee.dat"))){
+//			Employee o = (Employee) ois.readObject();
+//			System.out.println(o);
+//			Employee o1 = (Employee) ois.readObject();
+//			System.out.println(o1);
+			Employee[] newStaff= (Employee[]) ois.readObject();
+			for (Employee e:newStaff){
+				System.out.println(e);
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 	@Test
 	public void serialiable() throws Exception {

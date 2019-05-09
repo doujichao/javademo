@@ -15,4 +15,13 @@ public class Test {
         System.out.println(i);
 
     }
+
+    @org.junit.Test
+    public void testString(){
+        String hello="hello";
+        System.out.println(hello.codePointAt(0));
+        System.out.println('h');
+        System.out.println(Character.charCount(100));
+        System.out.println(hello.codePointAt(3));
+    }
 }

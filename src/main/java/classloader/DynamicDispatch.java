@@ -1,4 +1,4 @@
-package test.classloader;
+package classloader;
 
 /**
  * 方法动态分派演示

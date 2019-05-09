@@ -1,4 +1,4 @@
-package test.classloader;
+package classloader;
 
 /**
  * 通过子类引用父类的静态变量，不会触发子类的初始化
