@@ -8,11 +8,11 @@ public class Guitarist implements Singer {
         System.out.println("Just keep me where the light is");
     }
 
-    public void sing2(){
+    public void sing2() {
         System.out.println("Just keep me where the light is ");
     }
 
-    public void rest(){
+    public void rest() {
         System.out.println("zzz");
     }
 }

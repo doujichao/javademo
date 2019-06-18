@@ -6,7 +6,7 @@ public class ErrorBean {
         throw new Exception("Generic Exception");
     }
 
-    public void otherErrorProneMethod(){
+    public void otherErrorProneMethod() {
         throw new IllegalArgumentException("IllegalArgument Exception");
     }
 }

@@ -13,25 +13,25 @@ import java.lang.reflect.Method;
 
 public class ComposablePointcutExample {
 
-    public static void main(String[] args){
-        GrammyGuitarist johnMayer=new GrammyGuitarist();
-        ComposablePointcut pc=new ComposablePointcut(ClassFilter.TRUE,
+    public static void main(String[] args) {
+        GrammyGuitarist johnMayer = new GrammyGuitarist();
+        ComposablePointcut pc = new ComposablePointcut(ClassFilter.TRUE,
                 new SingMethodMatcher());
         System.out.println("Test 1 >>");
-        GrammyGuitarist proxy=getProxy(pc,johnMayer);
+        GrammyGuitarist proxy = getProxy(pc, johnMayer);
         testInvoke(proxy);
 
         System.out.println();
 
         System.out.println("Test 2 >>");
         pc.union(new TalkMethodMatcher());
-        proxy=getProxy(pc,johnMayer);
+        proxy = getProxy(pc, johnMayer);
         testInvoke(proxy);
         System.out.println();
 
         System.out.println("Test 3 >>");
         pc.intersection(new RestMethodMatcher());
-        proxy=getProxy(pc,johnMayer);
+        proxy = getProxy(pc, johnMayer);
         testInvoke(proxy);
         System.out.println();
     }
@@ -44,29 +44,29 @@ public class ComposablePointcutExample {
     }
 
     private static GrammyGuitarist getProxy(ComposablePointcut pc, GrammyGuitarist target) {
-        Advisor advisor=new DefaultPointcutAdvisor(pc,new SimpleBeforeAdvice());
+        Advisor advisor = new DefaultPointcutAdvisor(pc, new SimpleBeforeAdvice());
 
-        ProxyFactory proxyFactory=new ProxyFactory();
+        ProxyFactory proxyFactory = new ProxyFactory();
         proxyFactory.addAdvisor(advisor);
         proxyFactory.setTarget(target);
         return (GrammyGuitarist) proxyFactory.getProxy();
     }
 
-    private static class SingMethodMatcher extends StaticMethodMatcher{
+    private static class SingMethodMatcher extends StaticMethodMatcher {
         @Override
         public boolean matches(Method method, Class<?> targetClass) {
             return (method.getName().startsWith("si"));
         }
     }
 
-    private static class TalkMethodMatcher extends StaticMethodMatcher{
+    private static class TalkMethodMatcher extends StaticMethodMatcher {
         @Override
         public boolean matches(Method method, Class<?> targetClass) {
             return "talk".equals(method.getName());
         }
     }
 
-    private static class RestMethodMatcher extends StaticMethodMatcher{
+    private static class RestMethodMatcher extends StaticMethodMatcher {
         @Override
         public boolean matches(Method method, Class<?> targetClass) {
             return method.getName().endsWith("st");

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:util="http://www.springframework.org/schema/util"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util
@@ -19,7 +19,7 @@
         <value>advice</value>
     </util:list>
 
-    <bean id="ducomentaristTwo" class="spring.aop.proxyfactory.Documentarist" >
+    <bean id="ducomentaristTwo" class="spring.aop.proxyfactory.Documentarist">
     </bean>
     <bean class="org.springframework.aop.framework.ProxyFactoryBean" id="proxyTwo"
           p:target-ref="johnMayer" p:interceptorNames-ref="interceptorAdviceNames"
@@ -31,7 +31,7 @@
     <bean id="advisor" class="org.springframework.aop.support.DefaultPointcutAdvisor" p:advice-ref="advice">
         <property name="pointcut">
             <bean class="org.springframework.aop.aspectj.AspectJExpressionPointcut"
-                p:expression="execution(* sing*(..))"
+                  p:expression="execution(* sing*(..))"
             />
         </property>
     </bean>

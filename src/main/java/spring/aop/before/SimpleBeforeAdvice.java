@@ -10,19 +10,19 @@ import java.lang.reflect.Method;
  */
 public class SimpleBeforeAdvice implements MethodBeforeAdvice {
 
-    public static void main(String[] args){
-        Guitarist johnMayer=new Guitarist();
-        ProxyFactory pf=new ProxyFactory();
+    public static void main(String[] args) {
+        Guitarist johnMayer = new Guitarist();
+        ProxyFactory pf = new ProxyFactory();
         pf.addAdvice(new SimpleBeforeAdvice());
         pf.setTarget(johnMayer);
 
         //创建代理对象
-        Guitarist proxy= (Guitarist) pf.getProxy();
+        Guitarist proxy = (Guitarist) pf.getProxy();
         proxy.sing();
     }
 
     @Override
     public void before(Method method, Object[] objects, Object o) {
-        System.out.println("Before '"+method.getName()+"' ,tune guitar.");
+        System.out.println("Before '" + method.getName() + "' ,tune guitar.");
     }
 }

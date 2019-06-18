@@ -9,19 +9,19 @@ import spring.aop.pointcut.simple.SimpleAdvice;
 
 public class AspectJexpPointcutDemo {
 
-    public static void main(String[] args){
-        Guitarist johnMayer=new Guitarist();
+    public static void main(String[] args) {
+        Guitarist johnMayer = new Guitarist();
 
 
-        AspectJExpressionPointcut pc=new AspectJExpressionPointcut();
+        AspectJExpressionPointcut pc = new AspectJExpressionPointcut();
         pc.setExpression("execution(* sing*(..))");
-        Advisor advisor=new DefaultPointcutAdvisor(pc,new SimpleAdvice());
+        Advisor advisor = new DefaultPointcutAdvisor(pc, new SimpleAdvice());
 
-        ProxyFactory proxyFactory=new ProxyFactory();
+        ProxyFactory proxyFactory = new ProxyFactory();
         proxyFactory.setTarget(johnMayer);
         proxyFactory.addAdvisor(advisor);
 
-        Guitarist proxy= (Guitarist) proxyFactory.getProxy();
+        Guitarist proxy = (Guitarist) proxyFactory.getProxy();
         proxy.sing2();
         proxy.sing();
         proxy.rest();

@@ -10,14 +10,15 @@ public class GrammyGuitarist implements Singer {
                 "want to bring me down");
     }
 
-    public void sing(Guitarist guitarist){
-        System.out.println("play:"+guitarist.play());
+    public void sing(Guitarist guitarist) {
+        System.out.println("play:" + guitarist.play());
     }
 
-    public void rest(){
+    public void rest() {
         System.out.println("zzz");
     }
-    public void talk(){
+
+    public void talk() {
         System.out.println("talk");
     }
 }

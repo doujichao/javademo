@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public class Person implements Serializable {
 
-    private String name="";
-    private String age="";
+    private String name = "";
+    private String age = "";
 
     public Person() {
     }

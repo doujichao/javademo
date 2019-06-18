@@ -85,7 +85,7 @@ public class Tree {
 	}
 
 	/**
-     * 三种遍历方式以根节点在那个位置来命名，在第一个位置为前序遍历，第二个位置为中序遍历，在第三个位置为后序遍历
+	 * 三种遍历方式以根节点在那个位置来命名，在第一个位置为前序遍历，第二个位置为中序遍历，在第三个位置为后序遍历
 	 * 中序遍历二叉搜索树，最后遍历的结果是升序排列
 	 * @param localRoot 给定的节点
 	 */
@@ -154,7 +154,7 @@ public class Tree {
 	 */
 	public boolean delete(int key) {
 		Node current=root;
-		Node parent=root;
+		Node parent= root;
 		//这里需要知道这里时左子树，还是右子树，因为左子树和右子树删除的节点不一样
 		boolean isLeftChild=true;
 

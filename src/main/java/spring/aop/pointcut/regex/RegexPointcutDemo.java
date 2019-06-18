@@ -8,16 +8,16 @@ import spring.aop.pointcut.simple.SimpleAdvice;
 
 public class RegexPointcutDemo {
 
-    public static void main(String[] args){
-        Guitarist johnMayer=new Guitarist();
-        JdkRegexpMethodPointcut pointcut=new JdkRegexpMethodPointcut();
+    public static void main(String[] args) {
+        Guitarist johnMayer = new Guitarist();
+        JdkRegexpMethodPointcut pointcut = new JdkRegexpMethodPointcut();
         pointcut.setPattern(".*sing.*");
-        Advisor advisor=new DefaultPointcutAdvisor(pointcut,new SimpleAdvice());
+        Advisor advisor = new DefaultPointcutAdvisor(pointcut, new SimpleAdvice());
 
-        ProxyFactory proxyFactory=new ProxyFactory();
+        ProxyFactory proxyFactory = new ProxyFactory();
         proxyFactory.setTarget(johnMayer);
         proxyFactory.addAdvisor(advisor);
-        Guitarist guitarist= (Guitarist) proxyFactory.getProxy();
+        Guitarist guitarist = (Guitarist) proxyFactory.getProxy();
         guitarist.rest();
         guitarist.sing();
         guitarist.sing2();

@@ -13,6 +13,6 @@ public class SimpleStaticPointcut extends StaticMethodMatcherPointcut {
 
     @Override
     public ClassFilter getClassFilter() {
-        return clazz -> (clazz==GreatGuitarist.class);
+        return clazz -> (clazz == GreatGuitarist.class);
     }
 }

@@ -9,15 +9,15 @@ public class Guitarist implements Singer {
     }
 
     @AdviceRequired
-    public void sing(Guitarist guitarist){
-        System.out.println("play:"+guitarist.play());
+    public void sing(Guitarist guitarist) {
+        System.out.println("play:" + guitarist.play());
     }
 
     private String play() {
-        return this.getClass().getName()+"play";
+        return this.getClass().getName() + "play";
     }
 
-    public void rest(){
+    public void rest() {
         System.out.println("zzz");
     }
 }

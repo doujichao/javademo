@@ -16,13 +16,13 @@ public class SimpleDynamicPointcut extends DynamicMethodMatcherPointcut {
 
     @Override
     public boolean matches(Method method, Class<?> targetClass, Object... args) {
-        System.out.println("Dynamic chech for "+method.getName());
-        int x=((Integer)args[0]).intValue();
-        return (x!=100);
+        System.out.println("Dynamic chech for " + method.getName());
+        int x = ((Integer) args[0]).intValue();
+        return (x != 100);
     }
 
     @Override
     public ClassFilter getClassFilter() {
-        return clazz -> (clazz==SampleBean.class);
+        return clazz -> (clazz == SampleBean.class);
     }
 }

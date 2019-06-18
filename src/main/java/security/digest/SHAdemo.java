@@ -28,13 +28,14 @@ public class SHAdemo {
     public void testMD5() throws NoSuchAlgorithmException, IOException {
         byte[] bytes = "md5".getBytes();
         MessageDigest md5 = MessageDigest.getInstance("MD5");
-        DigestInputStream dis=new DigestInputStream(new ByteArrayInputStream(bytes),md5);
+        DigestInputStream dis = new DigestInputStream(new ByteArrayInputStream(bytes), md5);
         //流输入
-        dis.read(bytes,0,bytes.length);
+        dis.read(bytes, 0, bytes.length);
         byte[] digest = dis.getMessageDigest().digest();
         System.out.println(new String(digest));
         dis.close();
     }
+
     @Test
     public void testAlgo() throws NoSuchAlgorithmException, IOException {
         //实例化AlgorithmParameters，并指定DES算法

@@ -12,7 +12,7 @@ public class InstantTest {
      * Instant 表示时间线的某个点
      */
     @Test
-    public void testInstant(){
+    public void testInstant() {
         Instant now = Instant.now();
         System.out.println(now);
     }
@@ -33,9 +33,9 @@ public class InstantTest {
      * LocalDate 本地时间
      */
     @Test
-    public void testLocalDate(){
+    public void testLocalDate() {
         LocalDate today = LocalDate.now();
-        System.out.println("today:"+today);
+        System.out.println("today:" + today);
     }
 
 }

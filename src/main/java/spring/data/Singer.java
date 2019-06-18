@@ -13,13 +13,13 @@ public class Singer implements Serializable {
     private Date birthDate;
     private List<Album> albums;
 
-    private boolean addAlum(Album album){
-        if (albums==null){
-            albums=new ArrayList<>();
+    private boolean addAlum(Album album) {
+        if (albums == null) {
+            albums = new ArrayList<>();
             albums.add(album);
             return true;
-        }else {
-            if (albums.contains(album)){
+        } else {
+            if (albums.contains(album)) {
                 return false;
             }
         }

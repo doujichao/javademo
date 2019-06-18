@@ -10,6 +10,14 @@ public class John {
     private boolean programmer;
     private Long agaInseconds;
 
+    public static void main(String[] args) {
+        GenericXmlApplicationContext context = new GenericXmlApplicationContext();
+        context.load("application.xml");
+        context.refresh();
+        Object john = context.getBean("John");
+        System.out.println(john);
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -39,13 +47,5 @@ public class John {
                 ", programmer=" + programmer +
                 ", agaInseconds=" + agaInseconds +
                 '}';
-    }
-
-    public static void main(String[] args){
-        GenericXmlApplicationContext context=new GenericXmlApplicationContext();
-        context.load("application.xml");
-        context.refresh();
-        Object john = context.getBean("John");
-        System.out.println(john);
     }
 }

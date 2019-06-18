@@ -4,8 +4,8 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class ProxyFactoryBeanDemo {
 
-    public static void main(String[] args){
-        GenericXmlApplicationContext ctx=new GenericXmlApplicationContext();
+    public static void main(String[] args) {
+        GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
         ctx.load("aopApplication.xml");
         ctx.refresh();
 
