@@ -22,7 +22,7 @@ public class SimpleBeforeAdvice implements MethodBeforeAdvice {
     }
 
     @Override
-    public void before(Method method, Object[] objects, Object o) throws Throwable {
+    public void before(Method method, Object[] objects, Object o) {
         System.out.println("Before '"+method.getName()+"' ,tune guitar.");
     }
 }

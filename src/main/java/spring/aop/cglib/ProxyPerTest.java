@@ -19,7 +19,7 @@ public class ProxyPerTest {
         ProxyFactory proxyFactory=new ProxyFactory();
         proxyFactory.setTarget(target);
         proxyFactory.addAdvisor(advisor);
-        proxyFactory.setInterfaces(new Class[]{SimpleBean.class});
+        proxyFactory.setInterfaces(SimpleBean.class);
 
         SimpleBean proxy= (SimpleBean) proxyFactory.getProxy();
         System.out.println("Runing jdk tests");
