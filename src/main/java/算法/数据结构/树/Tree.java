@@ -12,7 +12,10 @@ import java.util.Stack;
  */
 public class Tree {
 
-	private Node root;
+	/**
+	 * 数的根节点
+	 */
+	protected Node root;
 
 	/**
 	 * 构造函数，初始化根root
@@ -82,6 +85,7 @@ public class Tree {
 	}
 
 	/**
+     * 三种遍历方式以根节点在那个位置来命名，在第一个位置为前序遍历，第二个位置为中序遍历，在第三个位置为后序遍历
 	 * 中序遍历二叉搜索树，最后遍历的结果是升序排列
 	 * @param localRoot 给定的节点
 	 */
@@ -151,6 +155,7 @@ public class Tree {
 	public boolean delete(int key) {
 		Node current=root;
 		Node parent=root;
+		//这里需要知道这里时左子树，还是右子树，因为左子树和右子树删除的节点不一样
 		boolean isLeftChild=true;
 
 		//找到待删除的节点current还有父节点parent
@@ -183,7 +188,7 @@ public class Tree {
 			}
 
 			//2、只有一个子节点
-			//有左节点
+			//只有左节点
 		}else if(current.rightChild==null){
 			if(current==root) {
 				root=current.leftChild;
@@ -192,7 +197,7 @@ public class Tree {
 			}else {
 				parent.rightChild=current.leftChild;
 			}
-			//有右节点
+			//只有右节点
 		}else if(current.leftChild==null) {
 			if(current==root) {
 				root=current.rightChild;

@@ -2,6 +2,8 @@ package regex;
 
 import org.junit.Test;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -100,5 +102,80 @@ public class RegexTest {
             }
         }
 
+    }
+
+    @Test
+    public void testRegexGet() {
+        String url="http://regex.info/blog:9999";
+        String regex="(?x)^(https?)://([^/:]+)(?:(\\d+))?";
+        Pattern compile = Pattern.compile(regex);
+        Matcher m = compile.matcher(url);
+        if (m.find()){
+            System.out.println(
+                    "Overall ["+m.group()+" ] "
+                    +" (from "+m.start()+" to "+m.end() +" )\n"
+                    +" Protocol ["+m.group(1)+" ] "
+                    +" (from "+m.start(1)+" to "+m.end(1) +" )\n"
+                    +" Hostname ["+m.group(2)+" ] "
+                    +" (from "+m.start(2)+" to "+m.end(2) +" )\n"
+            );
+
+            //group(3)可能为空，此处需要小心对待
+            if (m.group(3)==null){
+                System.out.println("No port;default of '80' is assumed");
+            }else {
+                System.out.println(" Port ["+m.group(3)+" ] "
+                        +" (from "+m.start(3)+" to "+m.end(3) +" )\n");
+            }
+        }
+    }
+
+    @Test
+    public  void testReplace(){
+        String string1="-->one+test<--";
+        String regex1="\\w+";
+        String string="he1lo1d34";
+        String regex="\\d";
+        Matcher matcher = Pattern.compile(regex).matcher(string);
+        String s = matcher.replaceAll("*");
+        System.out.println(s );
+        Matcher m = Pattern.compile(regex1).matcher(string1);
+        StringBuffer sb=new StringBuffer();
+        while (m.find()){
+            //给定一个StringBuffer将替换之后的内容填充到sb中
+            m.appendReplacement(sb,"XXX");
+        }
+        //结尾没有匹配的内容可以通过下面方法填充
+        m.appendTail(sb);
+        System.out.println(sb);
+
+    }
+
+    @Test
+    public void testCSV() throws FileNotFoundException {
+        Scanner sc=new Scanner(new FileInputStream("d:/测试留言.csv"));
+        String regex=//双引号字段保存到group(1),非引号字段保存到group(2)
+        "\\G(?:^|,)                              \n"+
+         "(?:                                    \n"+
+         " #要么是双引号字段                       \n"+
+         " \" #开头双引号                         \n"+
+         "( [^\"]*+(?:\"\"[^\"]*+)*+)            \n"+
+         "\" #结束双引号                          \n"+
+         "| ([^\",]*+)                           \n"+
+         "           )                           \n"
+                ;
+        String line = sc.nextLine();
+        Matcher mMain = Pattern.compile(regex).matcher(line);
+        //创建匹配[""]的matcher，目标文本暂时为虚构
+        Matcher mQuote = Pattern.compile("\"\"").matcher("");
+        while (mMain.find()){
+            String field;
+            if (mMain.start(2)>0){
+                field=mMain.group(2);
+            }else {
+                field=mQuote.reset(mMain.group(1)).replaceAll("\"");
+            }
+            System.out.println("Field [ "+field+" ]");
+        }
     }
 }
