@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="people" class="spring.People"/>
-    <bean id="John" class="spring.John"
+    <bean id="john" class="spring.John"
           p:name="#{people.name}" p:age="#{people.age}"
           p:height="#{people.height}" p:programmer="#{people.programmer}"
           p:agaInseconds="#{people.agaInseconds}"

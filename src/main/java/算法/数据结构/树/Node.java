@@ -30,7 +30,7 @@ public class Node {
     }
 
     public void changeColor() {
-        color=!color;
+        color = !color;
     }
 
 	void display() {

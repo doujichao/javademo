@@ -153,8 +153,8 @@ public class Tree {
 	 * @param key 待删除的节点
 	 */
 	public boolean delete(int key) {
-		Node current=root;
-		Node parent= root;
+		Node current= root;
+		Node parent = root;
 		//这里需要知道这里时左子树，还是右子树，因为左子树和右子树删除的节点不一样
 		boolean isLeftChild=true;
 

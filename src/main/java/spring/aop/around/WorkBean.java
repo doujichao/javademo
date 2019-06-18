@@ -7,6 +7,4 @@ public class WorkBean {
             System.out.println(x);
         }
     }
-
-
 }

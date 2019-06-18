@@ -79,19 +79,19 @@ public class RegexTest {
                 int g = matcher.groupCount();
                 System.out.println("Group:"+g);
                 if (g>0){
-                    for (int i=0; i<input.length(); i++){
-                        for (int j=1; j<=g; j++){
+                    for (int i = 0; i < input.length(); i++) {
+                        for (int j = 1; j <= g; j++) {
                             if (i==matcher.start(j) && i==matcher.end(j)){
                                 System.out.println("()");
                             }
                         }
-                        for (int j=1; j<=g; j++){
+                        for (int j = 1; j <= g; j++) {
                             if (i==matcher.start(j) && i!=matcher.end(j)){
                                 System.out.print("(");
                             }
                         }
                         System.out.print(input.charAt(i));
-                        for (int j = 1; j<=g; j++){
+                        for (int j = 1; j <= g; j++) {
                             if (i+1!=matcher.start(j) && i+1!=matcher.end(j)){
                                 System.out.print(")");
                             }
