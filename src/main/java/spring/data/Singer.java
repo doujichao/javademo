@@ -1,6 +1,7 @@
 package spring.data;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,7 +14,7 @@ public class Singer implements Serializable {
     private Date birthDate;
     private List<Album> albums;
 
-    private boolean addAlum(Album album) {
+    public boolean addAlum(Album album) {
         if (albums == null) {
             albums = new ArrayList<>();
             albums.add(album);
@@ -29,14 +30,12 @@ public class Singer implements Serializable {
 
     @Override
     public String toString() {
-        return "Singer{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", birthDate=" + birthDate +
-                ", albums=" + albums +
-                '}';
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        return String.format("{First name:%s,Last name:%s,Birthday:%s}",
+                firstName,lastName,sdf.format(birthDate));
     }
+
+
 
     public Long getId() {
         return id;

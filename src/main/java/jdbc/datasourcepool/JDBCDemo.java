@@ -174,7 +174,7 @@ public class JDBCDemo {
     @Test
     public void testGetKey() throws SQLException {
         Statement statement = connection.createStatement();
-        statement.execute("insert into customers (name,age,address) values ('小王',20,'上海')", com.mysql.jdbc.Statement.RETURN_GENERATED_KEYS);
+        statement.execute("insert into customers (name,age,address) values ('小王',20,'上海')",Statement.RETURN_GENERATED_KEYS);
         ResultSet rs = statement.getGeneratedKeys();
         if (rs.next()){
             System.out.println("id="+rs.getInt(1));
