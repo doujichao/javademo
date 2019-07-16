@@ -1,7 +1,7 @@
 package spring.hibernate;
 
 import org.springframework.data.repository.CrudRepository;
-import spring.hibernate.entities.Singer;
+import spring.entities.Singer;
 
 import java.util.List;
 

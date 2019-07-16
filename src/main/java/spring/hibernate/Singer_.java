@@ -1,8 +1,9 @@
 package spring.hibernate;
 
-import spring.hibernate.entities.Album;
-import spring.hibernate.entities.Instrument;
-import spring.hibernate.entities.Singer;
+
+import spring.entities.Album;
+import spring.entities.Instrument;
+import spring.entities.Singer;
 
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SetAttribute;

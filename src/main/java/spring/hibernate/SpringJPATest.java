@@ -8,9 +8,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 import spring.JpaConfig;
-import spring.hibernate.entities.Album;
-import spring.hibernate.entities.Singer;
-import spring.hibernate.entities.SingerSummary;
+import spring.entities.Album;
+import spring.entities.Singer;
+import spring.entities.SingerSummary;
 
 import java.util.Date;
 import java.util.List;

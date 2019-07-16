@@ -3,7 +3,7 @@ package spring.hibernate;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import spring.hibernate.entities.Singer;
+import spring.entities.Singer;
 
 import javax.annotation.Resource;
 import java.util.List;

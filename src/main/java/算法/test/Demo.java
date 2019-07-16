@@ -18,7 +18,7 @@ public class Demo {
 
 	
 	public static void main(String[] args) {
-		String property = Security.getProperty("security.provider.1");
+		String property = Security.getProperty("spring.security.provider.1");
 		System.out.println(property);
 		System.out.println("==================");
 		for (Provider p : Security.getProviders()) {

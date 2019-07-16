@@ -38,7 +38,7 @@ public class FileContent implements Content {
         }else if (nm.indexOf('.')<0||nm.endsWith(".txt")){
             type="text/plain;charset=ios-8859-1";
         }else {
-            type="application/octet-stream";
+            type="application/octet-util.stream";
         }
         return type;
     }

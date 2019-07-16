@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import spring.hibernate.entities.Singer;
+import spring.entities.Singer;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

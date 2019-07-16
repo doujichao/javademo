@@ -9,9 +9,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import spring.AppConfig;
-import spring.hibernate.entities.Album;
-import spring.hibernate.entities.Instrument;
-import spring.hibernate.entities.Singer;
+import spring.entities.Album;
+import spring.entities.Instrument;
+import spring.entities.Singer;
 
 import java.util.*;
 

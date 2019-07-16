@@ -1,6 +1,7 @@
 package spring.hibernate;
 
-import spring.hibernate.entities.SingerSummary;
+
+import spring.entities.SingerSummary;
 
 import java.util.List;
 

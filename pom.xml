@@ -24,6 +24,19 @@
         </plugins>
     </build>
     <dependencies>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.atomikos</groupId>
+            <artifactId>transactions-hibernate4</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+
         <!--java jsr 349 验证-->
         <dependency>
             <groupId>org.glassfish.web</groupId>
@@ -187,6 +200,11 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${org.hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>5.1.3.RELEASE</version>
         </dependency>
 
 

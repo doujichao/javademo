@@ -37,7 +37,7 @@ import java.util.function.Predicate;
  * 6）lambda表达式有个限制，那就是只能引用 final 或 final 局部变量，这就是说不能
  * 在lambda内部修改定义在域外的变量。
  *
- * Compile time error : "local variables referenced from a lambda expression
+ * Compile util.time error : "local variables referenced from a lambda expression
  * must be final or effectively final"
  * 另外，只是访问它而不作修改是可以的，如下所示：
  *
