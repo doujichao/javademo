@@ -117,13 +117,7 @@ public class StoreViewImpl extends UnicastRemoteObject implements StoreView, Ser
       long custId;
       custId=gui.getCustIdOnCustPan();
       if (custId == -1){
-          try {
-              showDisplay(new Customer(-1));
-          } catch (StoreException e1) {
-              e1.printStackTrace();
-          } catch (RemoteException e1) {
-              e1.printStackTrace();
-          }
+          showDisplay(new Customer(-1));
       }else {
           for (int i=0;i<storeControllers.size();i++){
               sc=storeControllers.get(i);

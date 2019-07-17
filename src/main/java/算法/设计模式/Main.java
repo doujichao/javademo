@@ -1,6 +1,8 @@
 package 算法.设计模式;
 
 import org.junit.Test;
+import 算法.设计模式.代理模式.Printable;
+import 算法.设计模式.代理模式.PrintereProxy;
 import 算法.设计模式.仲裁者模式.LoginFrame;
 import 算法.设计模式.单例模式.Singleton;
 import 算法.设计模式.原型模式.Manager;
@@ -20,6 +22,9 @@ import 算法.设计模式.模板方法模式.StringDisplay;
 import 算法.设计模式.状态模式.SafeFrame;
 import 算法.设计模式.窗口模式.PageMake;
 import 算法.设计模式.观察者模式.*;
+import 算法.设计模式.解释器模式.Context;
+import 算法.设计模式.解释器模式.Node;
+import 算法.设计模式.解释器模式.ProgramNode;
 import 算法.设计模式.访问者模式.Directory;
 import 算法.设计模式.访问者模式.File;
 import 算法.设计模式.访问者模式.LIstVisitor;
@@ -31,6 +36,12 @@ import 算法.设计模式.适配器模式.Print;
 import 算法.设计模式.适配器模式.Print1;
 import 算法.设计模式.适配器模式.PrintBanner;
 import 算法.设计模式.适配器模式.PrintBanner1;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.text.ParseException;
 
 public class Main {
 
@@ -219,6 +230,37 @@ public class Main {
                     e.printStackTrace();
                 }
             }
+        }
+    }
+
+    @Test
+    public void testProxy(){
+        Printable p=new PrintereProxy("Alice");
+        System.out.println("现在的名字是"+p.getPrinterName()+"。");
+        p.setPrinterName("Bob");
+        System.out.println("现在的名字是"+p.getPrinterName()+"。");
+        p.print("Hello world.");
+    }
+
+    @Test
+    public void testInterperter(){
+        try {
+            BufferedReader reader=new BufferedReader(new FileReader("src/main/java" +
+                    "/算法/设计模式/解释器模式/program.txt"));
+            String text;
+            while ((text=reader.readLine())!=null){
+                System.out.println("text = \""+text+"\"");
+                Node node=new ProgramNode();
+                node.parse(new Context(text));
+                System.out.println("node = "+node);
+            }
+            reader.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
     }
 }
