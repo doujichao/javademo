@@ -35,6 +35,11 @@ public class InsertionSort implements Sort{
 		System.out.println("复制的次数："+copy);
 	}
 
+	@Override
+	public void doSort1(int[] ins) {
+
+	}
+
 	/**
 	 * 去除重复元素
 	 * @param ins 已经有序的数组
@@ -61,9 +66,4 @@ public class InsertionSort implements Sort{
 		System.out.println(Arrays.toString(arr));
 	}
 
-	@Override
-	public void doSort1(int[] ins) {
-		// TODO Auto-generated method stub
-		
-	}
 }
