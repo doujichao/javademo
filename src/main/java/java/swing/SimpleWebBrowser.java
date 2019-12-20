@@ -1,4 +1,4 @@
-package swing;
+package java.swing;
 
 import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;

@@ -1,4 +1,4 @@
-package swing.事件;
+package java.swing.事件;
 
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;

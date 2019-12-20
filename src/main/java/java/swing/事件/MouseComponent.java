@@ -1,4 +1,4 @@
-package swing.事件;
+package java.swing.事件;
 
 import javax.swing.*;
 import java.awt.*;

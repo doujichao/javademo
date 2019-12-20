@@ -1,4 +1,4 @@
-package 串行化.archiver;
+package 算法.archiver;
 
 /**
  * 文件bean

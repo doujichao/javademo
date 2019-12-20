@@ -1,4 +1,4 @@
-package security.digest;
+package java.security.digest;
 
 import org.junit.Test;
 

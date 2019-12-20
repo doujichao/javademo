@@ -1,4 +1,4 @@
-package security.rsa;
+package java.security.rsa;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;

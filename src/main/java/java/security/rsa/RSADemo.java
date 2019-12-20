@@ -1,10 +1,9 @@
-package security.rsa;
+package java.security.rsa;
 
 
 import org.junit.Test;
 
 import javax.crypto.Cipher;
-import java.lang.annotation.Target;
 import java.security.*;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
