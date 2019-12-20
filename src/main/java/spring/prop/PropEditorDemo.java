@@ -49,7 +49,7 @@ public class PropEditorDemo {
     private void listViolations(Set<ConstraintViolation<Singer2>> violations) {
         violations.forEach(vio->{
             System.out.println("Validation error for property:"+vio.getPropertyPath()
-            +"with value:"+vio.getInvalidValue()+" with error message:"+vio.getMessage());
+            +"with value:"+vio.getInvalidValue()+" with error java.message:"+vio.getMessage());
         });
     }
 

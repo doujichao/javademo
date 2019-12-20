@@ -23,7 +23,7 @@
     </jdbc:embedded-database>
 
 
-   <!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+   <!-- <bean id="dataSource" class="org.springframework.java.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${driverClassName}"/>
         <property name="url" value="${url}"/>
         <property name="username" value="${username}"/>
@@ -57,8 +57,8 @@
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
                 <prop key="hibernate.max_fetch_depth">3</prop>
-                <prop key="hibernate.jdbc.fetch_size">50</prop>
-                <prop key="hibernate.jdbc.batch_size">10</prop>
+                <prop key="hibernate.java.jdbc.fetch_size">50</prop>
+                <prop key="hibernate.java.jdbc.batch_size">10</prop>
                 <!--<prop key="hibernate.hbm2ddl.auto">create-drop</prop>-->
                 <prop key="hibernate.format_sql">true</prop>
                 <prop key="hibernate.show_sql">true</prop>

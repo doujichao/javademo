@@ -16,7 +16,7 @@
     <util:properties id="jdbc" location="classpath:db/jdbc2.properties"></util:properties>
 
     <bean class="org.springframework.jndi.JndiObjectFactoryBean" id="dataSource1"
-        p:jndiName="java:comp/env/jdbc/musicdb"
+        p:jndiName="java:comp/env/java.jdbc/musicdb"
     />
 
 </beans>

@@ -62,8 +62,8 @@ public class JpaConfig {
         properties.put("hibernate.user_sql_comments",true);
         properties.put("hibernate.show_sql",true);
         properties.put("hibernate.max_fetch_depth",3);
-        properties.put("hibernate.jdbc.batch_size",10);
-        properties.put("hibernate.jdbc.fetch_size",50);
+        properties.put("hibernate.java.jdbc.batch_size",10);
+        properties.put("hibernate.java.jdbc.fetch_size",50);
         return properties;
     }
 

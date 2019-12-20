@@ -20,7 +20,7 @@ public class PlainSingerDemo implements SingerDao{
     }
 
     private static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/test?useSSL=true&serverTimezone=UTC&characterEncoding=utf-8",
+        return DriverManager.getConnection("java.jdbc:mysql://localhost:3306/test?useSSL=true&serverTimezone=UTC&characterEncoding=utf-8",
                 "root","15937116841");
     }
 

@@ -102,7 +102,7 @@ public class Test {
     public void testI18N(){
         //信息格式化串
         String pattern1="{0},你好！你于{1}在工商银行存入{2}员";
-        String pattern2="At {1,time,short} On {1,date,long},{0} paid {2,number,currency}.";
+        String pattern2="At {1,java.time,short} On {1,date,long},{0} paid {2,number,currency}.";
 
         //用于动态替换占位符的参数
         Object[] params={"John",new GregorianCalendar().getTime(),1.0E3};
@@ -157,7 +157,7 @@ public class Test {
         Arrays.sort(planets, Comparator.comparingInt(String::length));
         System.out.println(Arrays.toString(planets));
 
-        Timer t=new Timer(1000,event -> System.out.println("The time is "+new Date()));
+        Timer t=new Timer(1000,event -> System.out.println("The java.time is "+new Date()));
         t.start();
     }
 
