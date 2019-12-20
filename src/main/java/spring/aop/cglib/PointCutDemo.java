@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 /**
  * 过滤advise方法
  */
-public class TestPointcut extends StaticMethodMatcherPointcut {
+public class PointCutDemo extends StaticMethodMatcherPointcut {
     @Override
     public boolean matches(Method method, Class<?> targetClass) {
         return ("advise".equals(method.getName()));

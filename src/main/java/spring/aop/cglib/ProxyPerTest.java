@@ -9,7 +9,7 @@ public class ProxyPerTest {
     public static void main(String[] args) {
         SimpleBean target = new DefaultSimpleBean();
         Advisor advisor = new DefaultPointcutAdvisor(
-                new TestPointcut(), new NoOpBeforeAdvice());
+                new PointCutDemo(), new BeforeMethod());
         runCglibTest(advisor, target);
         runCglibFrozenTests(advisor, target);
         runJdkTests(advisor, target);
