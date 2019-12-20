@@ -13,7 +13,7 @@ public class FileDemo {
     public void testDeleteFold(){
 
         File file=new File("D:\\game\\ra3 - 副本");
-        List<File> fileList=new LinkedList<>();
+        List<File> fileList=new LinkedList<File>();
         fileList.add(file);
         while (fileList.size()>0){
             File last = ((LinkedList<File>) fileList).getLast();

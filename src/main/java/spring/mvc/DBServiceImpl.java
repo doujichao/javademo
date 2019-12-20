@@ -1,7 +1,7 @@
 package spring.mvc;
 
-import java.jdbc.ConnectionPool;
-import java.jdbc.ConnectionPoolImpl;
+import demo.jdbc.ConnectionPool;
+import demo.jdbc.ConnectionPoolImpl;
 
 import java.sql.Statement;
 
