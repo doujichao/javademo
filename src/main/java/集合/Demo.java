@@ -1,13 +1,15 @@
 package 集合;
 
 
+import org.junit.Test;
+
 import java.util.*;
 
-public class Test {
+public class Demo {
     /**
      * 测试填充数组和集合
      */
-    @org.junit.Test
+    @Test
     public void testFill(){
         //数组的填充
         int len=5;
@@ -22,14 +24,4 @@ public class Test {
         System.out.println(list);
     }
 
-
-    @org.junit.Test
-    public void testSet(){
-        Set set=new TreeSet(new Comparator() {
-            @Override
-            public int compare(Object o1, Object o2) {
-                return -1;
-            }
-        });
-    }
 }

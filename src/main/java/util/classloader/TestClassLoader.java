@@ -19,7 +19,7 @@ public class TestClassLoader {
         DiskClassLoader classLoader=new DiskClassLoader("d:\\2\\");
 
         try {
-            Class<?> c = classLoader.loadClass("Test");
+            Class<?> c = classLoader.loadClass("Demo");
 
             if (c!=null){
                 Object obj = c.newInstance();

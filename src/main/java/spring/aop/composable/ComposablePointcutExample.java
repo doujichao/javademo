@@ -17,19 +17,19 @@ public class ComposablePointcutExample {
         GrammyGuitarist johnMayer = new GrammyGuitarist();
         ComposablePointcut pc = new ComposablePointcut(ClassFilter.TRUE,
                 new SingMethodMatcher());
-        System.out.println("Test 1 >>");
+        System.out.println("Demo 1 >>");
         GrammyGuitarist proxy = getProxy(pc, johnMayer);
         testInvoke(proxy);
 
         System.out.println();
 
-        System.out.println("Test 2 >>");
+        System.out.println("Demo 2 >>");
         pc.union(new TalkMethodMatcher());
         proxy = getProxy(pc, johnMayer);
         testInvoke(proxy);
         System.out.println();
 
-        System.out.println("Test 3 >>");
+        System.out.println("Demo 3 >>");
         pc.intersection(new RestMethodMatcher());
         proxy = getProxy(pc, johnMayer);
         testInvoke(proxy);
