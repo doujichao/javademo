@@ -119,7 +119,7 @@
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-client</artifactId>
-            <version>5.13.4</version>
+            <version>5.15.9</version>
         </dependency>
         <!--H2数据库-->
         <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
